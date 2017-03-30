@@ -25,7 +25,7 @@ ENV "SWARM_CLIENT_VERSION=2.2" \
     "COMMAND_OPTIONS="
 
 RUN adduser -G root -D jenkins \
- && apk --update --no-cache add openjdk8-jre python py-pip git openssh \
+ && apk --update --no-cache add openjdk8-jre python py-pip git openssh bash \
  && wget -q https://repo.jenkins-ci.org/releases/org/jenkins-ci/plugins/swarm-client/${SWARM_CLIENT_VERSION}/swarm-client-${SWARM_CLIENT_VERSION}-jar-with-dependencies.jar -P /home/jenkins/ \
  && pip install docker-compose
 
