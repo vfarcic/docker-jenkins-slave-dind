@@ -24,4 +24,9 @@ file_env() {
 
 file_env 'JENKINS_PASSWORD'
 
+# add the 'swarm-manager' label to the jenkins agent if the host is a swarm manager
+if [ $(docker info --format '{{.Swarm.ControlAvailable}}') == "true" ]; then
+  COMMAND_OPTIONS="${COMMAND_OPTIONS} -labels swarm-manager"
+fi
+
 java -jar /home/jenkins/swarm-client-${SWARM_CLIENT_VERSION}.jar ${COMMAND_OPTIONS}
