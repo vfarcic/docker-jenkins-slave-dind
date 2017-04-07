@@ -24,4 +24,4 @@ file_env() {
 
 file_env 'JENKINS_PASSWORD'
 
-java -jar /home/jenkins/swarm-client-${SWARM_CLIENT_VERSION}-jar-with-dependencies.jar ${COMMAND_OPTIONS}
+java -jar /home/jenkins/swarm-client-${SWARM_CLIENT_VERSION}.jar ${COMMAND_OPTIONS}
