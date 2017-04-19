@@ -1,4 +1,4 @@
-FROM docker:1.13.1
+FROM docker:17.03.1-ce
 
 MAINTAINER Viktor Farcic <viktor@farcic.com>
 
@@ -20,13 +20,13 @@ LABEL org.label-schema.vendor="vfarcic" \
     org.label-schema.schema-version="1.0" \
     org.label-schema.build-date=$build_date
 
-ENV "SWARM_CLIENT_VERSION=2.2" \
+ENV "SWARM_CLIENT_VERSION=3.3" \
     "DOCKER_COMPOSE_VERSION=1.11.2" \
     "COMMAND_OPTIONS="
 
 RUN adduser -G root -D jenkins \
- && apk --update --no-cache add openjdk8-jre python py-pip git openssh \
- && wget -q https://repo.jenkins-ci.org/releases/org/jenkins-ci/plugins/swarm-client/${SWARM_CLIENT_VERSION}/swarm-client-${SWARM_CLIENT_VERSION}-jar-with-dependencies.jar -P /home/jenkins/ \
+ && apk --update --no-cache add openjdk8-jre python py-pip git openssh bash \
+ && wget -q https://repo.jenkins-ci.org/releases/org/jenkins-ci/plugins/swarm-client/${SWARM_CLIENT_VERSION}/swarm-client-${SWARM_CLIENT_VERSION}.jar -P /home/jenkins/ \
  && pip install docker-compose
 
 COPY run.sh /run.sh
