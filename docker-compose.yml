@@ -6,8 +6,13 @@ services:
     container_name: jenkins-agent
     image: vfarcic/jenkins-swarm-agent
     environment:
-      - COMMAND_OPTIONS=-master ${JENKINS_ADDRESS} -username ${USER} -passwordEnvVariable PASSWORD_ENVVAR
-      - PASSWORD_ENVVAR=${PASSWORD}
+      #- JENKINS_URL=
+      #- JENKINS_USERNAME=
+      #- JENKINS_USERNAME_FILE=
+      #- JENKINS_USERNAME_PASSWORD=
+      #- JENKINS_USERNAME_PASSWORD_FILE=
+      #- SWARM_CLIENT_OPTS=-labels swarm-executor
+      - JAVA_TOOL_OPTIONS='-Xmx64m -XX:+HeapDumpOnOutOfMemoryError'
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /workspace:/workspace
